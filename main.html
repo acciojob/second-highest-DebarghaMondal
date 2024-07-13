@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body> 
+    <script>
+        function secondHighest(arr) {
+            if (arr.length <= 1) {
+                return -Infinity;
+            }
+            
+            let max = -Infinity;
+            let secondMax = -Infinity;
+            
+            for (let i = 0; i < arr.length; i++) {
+                let num = parseInt(arr[i]); // Convert string to integer
+                if (num > max) {
+                    secondMax = max;
+                    max = num;
+                } else if (num > secondMax && num < max) {
+                    secondMax = num;
+                }
+            }
+            
+            if (secondMax === -Infinity || secondMax === max) {
+                return -Infinity;
+            } else {
+                return secondMax;
+            }
+        }
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			if (arr <= 1){
-				return -Infinity;
-			} 
-			else (let n = arr.sort();
-			let result = n.length - 1;){
-			return result;
-			}
-		}
-
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
-
-    <script type="text/javascript" src="./script.js">
-</script>
-
+        function Main() {
+            var n = prompt("Enter the number of elements");
+            var arr = [];
+            for (var i = 0; i < n; i++) {
+                arr[i] = prompt("Enter element " + (i+1));
+            }
+            alert(secondHighest(arr));
+        }
+        Main();
+    </script>
 </body>
-
 </html>
